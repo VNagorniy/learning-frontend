@@ -22,3 +22,17 @@ function triangleType(a, b, c) {
 		return 2;
 	}
 }
+
+//Equal Sides Of An Array. https://www.codewars.com/kata/5679aa472b8f57fb8c000047/train/javascript
+function findEvenIndex(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		let left = arr.slice(0, i + 1).reduce((acc, val) => acc + val, 0);
+		let right = arr.slice(i).reduce((acc, val) => acc + val, 0);
+
+		if (left === right) {
+			return i;
+		}
+	}
+
+	return -1;
+}
