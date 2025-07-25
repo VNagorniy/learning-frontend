@@ -38,3 +38,12 @@ const countElements = (arr) => {
 
 const counts = countElements(mixedArray);
 console.log(counts);
+
+//Палиндром (слово, читающейся в обе стороны одинаково)
+let str1 = 'потоп';
+let str2 = 'тапок';
+
+const isPalindrome = (str) => str.split('').reverse().join('') === str;
+
+console.log(isPalindrome(str1));
+console.log(isPalindrome(str2));
