@@ -15,3 +15,26 @@ function countOccurrences(arr) {
 }
 
 console.log(countOccurrences([1, 2, 2, 3, 3, 3, 4]));
+
+//Ф-я принимает массив, возвращает объект, ключи это элемент массива, а значение кол-во повторений
+
+const mixedArray = [1, '1', { a: 1 }, { a: 1 }, 1, 'test', 'test'];
+
+const countElements = (arr) => {
+	const result = {};
+
+	for (let i = 0; i < arr.length; i++) {
+		const current = JSON.stringify(arr[i]);
+
+		if (result[current]) {
+			result[current].count += 1;
+		} else {
+			result[current] = { value: current, count: 1 };
+		}
+	}
+
+	return result;
+};
+
+const counts = countElements(mixedArray);
+console.log(counts);
