@@ -104,3 +104,17 @@ function persistence(num) {
 	return count;
 }
 console.log(persistence(39));
+
+//------------------------------
+//Take a Ten Minutes Walk https://www.codewars.com/kata/54da539698b8a2ad76000228/train/javascript
+
+function isValidWalk(walk) {
+	let occurrence = walk.reduce((acc, v) => {
+		return { ...acc, [v]: acc[v] ? (acc[v] += 1) : (acc[v] = 1) };
+	}, {});
+
+	return walk.length === 10 ? occurrence.n === occurrence.s && occurrence.w === occurrence.e : false;
+}
+
+console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
+console.log(isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']));
