@@ -86,3 +86,21 @@ function alphabetPosition(text) {
 function countBits(n) {
 	return n.toString(2).split('0').join('').length;
 }
+
+//------------------------------
+//Persistent Bugger https://www.codewars.com/kata/55bf01e5a717a0d57e0000ec/train/javascript
+function persistence(num) {
+	let count = 0;
+	let numToStr = new String(num);
+
+	while (numToStr.length > 1) {
+		count += 1;
+		numToStr = numToStr
+			.split('')
+			.reduce((acc, val) => acc * Number(val))
+			.toString();
+	}
+
+	return count;
+}
+console.log(persistence(39));
