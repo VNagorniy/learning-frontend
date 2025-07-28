@@ -134,3 +134,8 @@ function tribonacci(signature, n) {
 
 	return result;
 }
+
+//------------------------------
+//Detect Pangram https://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/javascript
+
+const isPangram = (str) => new Set(str.toLowerCase().match(/[a-z]/g)).size === 26;
