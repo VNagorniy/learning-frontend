@@ -118,3 +118,19 @@ function isValidWalk(walk) {
 
 console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']));
 console.log(isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']));
+
+//------------------------------
+//Tribonacci Sequence https://www.codewars.com/kata/556deca17c58da83c00002db/train/javascript
+function tribonacci(signature, n) {
+	let result = [...signature];
+
+	if (n < 3) {
+		return result.slice(0, n - 3);
+	}
+
+	for (let i = 0; i < n - 3; i++) {
+		result.push(result.slice(i, i + 3).reduce((acc, val) => acc + val, 0));
+	}
+
+	return result;
+}
