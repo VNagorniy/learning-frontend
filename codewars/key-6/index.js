@@ -1,4 +1,7 @@
 //Triangle type https://www.codewars.com/kata/53907ac3cd51b69f790006c5/train/javascript
+
+const e = require('express');
+
 /* Should return ᐃ type:
   0 : if ᐃ cannot be made with given sides
   1 : acute ᐃ
@@ -139,3 +142,23 @@ function tribonacci(signature, n) {
 //Detect Pangram https://www.codewars.com/kata/545cedaa9943f7fe7b000048/train/javascript
 
 const isPangram = (str) => new Set(str.toLowerCase().match(/[a-z]/g)).size === 26;
+
+//------------------------------
+//Build Tower https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/javascript
+
+function towerBuilder(nFloors) {
+	let result = [];
+
+	while (result.length < nFloors) {
+		let row = [];
+		for (let i = 0; i < nFloors * 2 - 1; i++) {
+			if (i < nFloors - 1 - result.length || i >= nFloors + result.length) {
+				row.push(' ');
+			} else {
+				row.push('*');
+			}
+		}
+		result.push(row.join(''));
+	}
+	return result;
+}
