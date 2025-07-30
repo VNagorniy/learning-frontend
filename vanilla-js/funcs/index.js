@@ -47,3 +47,24 @@ const isPalindrome = (str) => str.split('').reverse().join('') === str;
 
 console.log(isPalindrome(str1));
 console.log(isPalindrome(str2));
+
+//Ф-я возвращающая первое уникальное вхождение в строке
+
+console.log(firstUniqueChar('leetcode')); //l
+console.log(firstUniqueChar('aabbccdde')); //e
+console.log(firstUniqueChar('aabbcc')); //null
+
+function firstUniqueChar(str) {
+	const res = {};
+
+	for (let item of str) {
+		res[item] = (res[item] || 0) + 1;
+	}
+
+	for (let item of str) {
+		if (res[item] === 1) {
+			return item;
+		}
+	}
+	return null;
+}
