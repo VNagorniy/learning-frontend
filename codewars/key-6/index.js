@@ -162,3 +162,13 @@ function towerBuilder(nFloors) {
 	}
 	return result;
 }
+//------------------------------
+//Are they the "same"? https://www.codewars.com/kata/550498447451fbbd7600041c/train/javascript
+function comp(array1, array2) {
+	if (array1 && array2) {
+		let sqrtArray2 = array2.map((num) => Math.sqrt(num));
+		return array1.reduce((a, v) => a + v, 0) === sqrtArray2.reduce((a, v) => a + v, 0);
+	} else {
+		return false;
+	}
+}
