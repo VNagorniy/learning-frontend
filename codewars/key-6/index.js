@@ -185,3 +185,9 @@ function deleteNth(arr, n) {
 		return occurrence[item] <= n;
 	});
 }
+
+//------------------------------
+//Moving Zeros To The End https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/javascript
+function moveZeros(arr) {
+	return [...arr.filter((n) => n !== 0), ...arr.filter((n) => n === 0)];
+}
