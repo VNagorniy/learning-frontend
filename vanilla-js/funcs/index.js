@@ -68,3 +68,37 @@ function firstUniqueChar(str) {
 	}
 	return null;
 }
+
+//Необходимо написать функцию, возвращающую значения всех вершин дерева:
+const tree = {
+	value: 1,
+	children: [
+		{
+			value: 2,
+			children: [{ value: 4 }, { value: 5 }]
+		},
+		{
+			value: 3,
+			children: [{ value: 6 }, { value: 7 }]
+		}
+	]
+};
+
+function getTreeValues(tree) {
+	const values = [];
+
+	function recursion(node) {
+		if (typeof node.value === 'number') {
+			values.push(node.value);
+		}
+
+		if (node.children) {
+			node.children.forEach(recursion);
+		}
+	}
+
+	recursion(tree);
+	return values;
+}
+
+console.log(getTreeValues(tree)); // => [1,2,4,5,3,6,7]
