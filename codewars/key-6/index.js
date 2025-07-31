@@ -172,3 +172,16 @@ function comp(array1, array2) {
 		return false;
 	}
 }
+
+//------------------------------
+//Delete occurrences of an element if it occurs more than n times https://www.codewars.com/kata/554ca54ffa7d91b236000023/train/javascript
+
+function deleteNth(arr, n) {
+	let occurrence = {};
+
+	return arr.filter((item) => {
+		occurrence[item] = occurrence[item] ? occurrence[item] + 1 : 1;
+
+		return occurrence[item] <= n;
+	});
+}
