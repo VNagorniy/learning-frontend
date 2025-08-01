@@ -102,3 +102,29 @@ function getTreeValues(tree) {
 }
 
 console.log(getTreeValues(tree)); // => [1,2,4,5,3,6,7]
+
+//Ф-я createCounter, которая создает счетчик с 3мя методами: increment, decrement и выводит значение в консоль через 1 секунду
+
+function createCounter(a) {
+	let sum = a;
+	let obj = {
+		increment() {
+			return (sum += 1);
+		},
+		decrement() {
+			return (sum -= 1);
+		},
+		log() {
+			setTimeout(() => {
+				console.log(sum);
+			}, 1000);
+		}
+	};
+	return obj;
+}
+
+const counter = createCounter(10);
+counter.increment();
+counter.increment();
+counter.decrement();
+counter.log();
