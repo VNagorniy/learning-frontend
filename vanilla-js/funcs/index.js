@@ -128,3 +128,15 @@ counter.increment();
 counter.increment();
 counter.decrement();
 counter.log();
+
+//Ф-я делающая из массива телефонный номер
+
+function createPhoneNumber(nums) {
+	let part1 = nums.slice(0, 3).join('');
+	let part2 = nums.slice(3, 6).join('');
+	let part3 = nums.slice(6).join('');
+
+	return `(${part1}) ${part2}-${part3}`;
+}
+
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
