@@ -1,0 +1,10 @@
+#timer-button {
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+#timer-button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
