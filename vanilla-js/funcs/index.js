@@ -140,3 +140,13 @@ function createPhoneNumber(nums) {
 }
 
 console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
+
+//Ф-я возвращающая сумму первых 2 наименьших чисел массива
+
+function func(nums) {
+	const [num1, num2] = nums.sort((a, b) => a - b);
+
+	return num1 + num2;
+}
+
+console.log(func([19, 111, 2, 22, 60, 77]));
