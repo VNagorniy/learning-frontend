@@ -168,3 +168,17 @@ function expandedForm(num) {
 console.log(expandedForm(12)); // Вывод: '10 + 2'
 console.log(expandedForm(42)); // Вывод: '40 + 2'
 console.log(expandedForm(70304)); // Вывод: '70000 + 300 + 4'
+
+//Напишите функцию, которая принимает дату в виде строки и определяет, сколько дней прошло с начала года до этой даты. Функция должна учитывать високосные годы и возвращать корректное количество дней для любой заданной даты в формате YYYY-MM-DD.
+
+function daysSinceYearStart(dateString) {
+	const date = new Date(dateString);
+	const startOfYear = new Date(date.getFullYear(), 0, 1);
+
+	const msPerDay = 24 * 60 * 60 * 1000;
+	const diffInMs = date - startOfYear;
+
+	return Math.ceil(diffInMs / msPerDay);
+}
+
+console.log(daysSinceYearStart('2024-03-01')); // Ожидаемый результат: 61
