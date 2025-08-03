@@ -182,3 +182,30 @@ function daysSinceYearStart(dateString) {
 }
 
 console.log(daysSinceYearStart('2024-03-01')); // Ожидаемый результат: 61
+
+//Напишите функцию, которая принимает отсортированный список целых чисел и возвращает строку, в которой числа либо записаны по одному, либо указаны диапазоны через дефис, если диапазон содержит хотя бы три последовательных числа.
+
+function solution(list) {
+	let result = [];
+	let i = 0;
+
+	while (i < list.length) {
+		let start = list[i];
+		while (list[i + 1] - list[i] === 1) i++;
+		let end = list[i];
+
+		if (end - start >= 2) {
+			result.push(`${start}-${end}`);
+		} else {
+			result.push(start.toString());
+			if (end !== start) {
+				result.push(end.toString());
+			}
+		}
+		i++;
+	}
+
+	return result.join(',');
+}
+
+console.log(solution([-10, -9, -8, -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20])); // "-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
