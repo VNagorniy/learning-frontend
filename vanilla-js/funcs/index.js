@@ -150,3 +150,21 @@ function func(nums) {
 }
 
 console.log(func([19, 111, 2, 22, 60, 77]));
+
+//Вам будет дан номер, и вам нужно будет вернуть его в виде строки в развернутом виде. Все числа будут целыми числами, больше 0.
+
+function expandedForm(num) {
+	return num
+		.toString()
+		.split('')
+		.reverse()
+		.map((digit, index) => digit * Math.pow(10, index))
+		.filter((val) => val > 0)
+		.reverse()
+		.join(' + ');
+}
+
+// Примеры использования:
+console.log(expandedForm(12)); // Вывод: '10 + 2'
+console.log(expandedForm(42)); // Вывод: '40 + 2'
+console.log(expandedForm(70304)); // Вывод: '70000 + 300 + 4'
