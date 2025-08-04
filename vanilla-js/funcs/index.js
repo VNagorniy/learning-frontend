@@ -69,6 +69,27 @@ function firstUniqueChar(str) {
 	return null;
 }
 
+//Напишите функцию, которая принимает массив чисел и возвращает массив объектов. Каждый объект должен содержать уникальное число из исходного массива и количество его повторений.
+
+//Пример: Для массива [1, 2, 2, 3, 3, 3, 4] функция должна вернуть [{ value: 1, count: 1 }, { value: 2, count: 2 }, { value: 3, count: 3 }, { value: 4, count: 1 }].
+
+function countUniqueValues(arr) {
+	const result = [];
+	const countMap = {};
+
+	arr.forEach((num) => {
+		countMap[num] = (countMap[num] || 0) + 1;
+	});
+
+	for (let num in countMap) {
+		result.push({ value: parseInt(num), count: countMap[num] });
+	}
+
+	return result;
+}
+
+console.log(countUniqueValues([1, 2, 2, 3, 3, 3, 4])); // [{ value: 1, count: 1 }, { value: 2, count: 2 }, { value: 3, count: 3 }, { value: 4, count: 1 }]
+
 //Необходимо написать функцию, возвращающую значения всех вершин дерева:
 const tree = {
 	value: 1,
