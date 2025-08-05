@@ -328,3 +328,17 @@ const dataObj = [
 
 const renderedList = renderList(dataObj, 'name');
 console.log(renderedList); // Ожидаемый результат: // "<ul><li>Alice</li><li>Bob</li><li>Charlie</li></ul>"
+
+//------------------------------------------------------------------
+// Напишите функцию, которая принимает строку и перемещает первую букву каждого слова в конец, а затем добавляет «ay» в конец слова.
+
+function pigIt(str) {
+	return str
+		.split(' ')
+		.map((word) => word.substring(1) + word.charAt(0) + 'ay')
+		.join(' ');
+}
+
+console.log(pigIt('Pig latin is cool')); // 'igPay atinlay siay oolcay'
+console.log(pigIt('This is my string')); // 'hisTay siay ymay tringsay'
+//------------------------------------------------------------------
