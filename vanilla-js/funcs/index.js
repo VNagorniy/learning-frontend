@@ -311,3 +311,20 @@ console.log(sorted);
 // ]
 
 //------------------------------------------------------------------
+//Рендер списка элементов с динамическим ключом
+
+//Напишите функцию, которая принимает массив объектов и имя ключа. Функция должна возвращать HTML-строку, содержащую список (<ul>), где каждый элемент списка (<li>) отображает значение указанного ключа из каждого объекта.
+
+function renderList(array, key) {
+	const items = array.map((item) => `<li>${item[key]}</li>`).join('');
+	return `<ul>${items}</ul>`;
+}
+
+const dataObj = [
+	{ id: 1, name: 'Alice', role: 'Frontend Developer' },
+	{ id: 2, name: 'Bob', role: 'Backend Developer' },
+	{ id: 3, name: 'Charlie', role: 'DevOps Engineer' }
+];
+
+const renderedList = renderList(dataObj, 'name');
+console.log(renderedList); // Ожидаемый результат: // "<ul><li>Alice</li><li>Bob</li><li>Charlie</li></ul>"
