@@ -1,0 +1,137 @@
+@import 'https://unpkg.com/open-props/easings.min.css';
+
+/* 
+  @property used because the effect 
+  transitions these within a gradient 
+*/
+
+@property --btn-conic-hint {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 0%; /* will transition 0%-100% */
+}
+
+@property --btn-effect-opacity {
+	syntax: '<percentage>';
+	inherits: false;
+	initial-value: 0%; /* will transition 0%-5% */
+}
+
+button {
+	--anchor-name: ; /* unique per instance */
+	anchor-name: var(--anchor-name);
+
+	/* used so the conic only animates the hint on hover-in */
+	--btn-conic-hint-duration: 0s;
+	--btn-conic-hint-delay: 0.5s;
+
+	/* adaptive semi-transparent hover highlight */
+	--highlight-color: light-dark(hsl(0 0% 0% / var(--btn-effect-opacity)), hsl(0 0% 100% / var(--btn-effect-opacity)));
+
+	/* 
+    2 layers: 
+      - an opacity fading solid color layer
+      - the conic gradient that does the radar effect
+  */
+	background: conic-gradient(var(--highlight-color) 0 0), conic-gradient(var(--highlight-color), var(--btn-conic-hint), transparent 0);
+
+	@media (prefers-reduced-motion: no-preference) {
+		/* transitions the @property props */
+		transition: outline-offset 145ms var(--ease-4), --btn-conic-hint var(--btn-conic-hint-duration) var(--ease-in-out-4) var(--btn-conic-hint-delay), --btn-effect-opacity 0.7s ease-out;
+
+		& > svg {
+			transition: scale 1s var(--ease-spring-4);
+		}
+	}
+
+	&:is(:hover, :focus-visible) {
+		/* animate the conic to completion */
+		--btn-conic-hint: 100%;
+		/* give the conic completion duration */
+		--btn-conic-hint-duration: 1s;
+		/* give highlight some opacity */
+		--btn-effect-opacity: 5%;
+
+		&::before {
+			opacity: 1;
+			transform: none;
+			transition-delay: calc(var(--btn-conic-hint-duration) + var(--btn-conic-hint-delay));
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		&:is(:hover, :focus-visible) {
+			/* dark/dim screens need more highlight opacity */
+			--btn-effect-opacity: 15%;
+		}
+	}
+
+	&:active {
+		outline-offset: 0px;
+
+		& > svg {
+			scale: 0.8;
+		}
+	}
+}
+
+/* support styles */
+button {
+	font-family: inherit;
+	fill: none;
+	stroke: currentcolor;
+
+	border: none;
+
+	padding: 3ch;
+	aspect-ratio: 1;
+	border-radius: 1e3px;
+
+	display: flex;
+	place-items: center;
+
+	cursor: pointer;
+	outline-offset: 5px;
+
+	&::before {
+		content: attr(aria-label);
+
+		position: absolute;
+		position-anchor: var(--anchor-name);
+		position-try-options: flip-block; /* going away */
+		position-try-fallbacks: flip-block;
+		inset-area: block-start; /* going away */
+		position-area: block-start;
+		margin-block-end: 1ch;
+
+		font-size: 1.25rem;
+		font-weight: 200;
+		text-align: center;
+
+		opacity: 0;
+		transform: translateY(5px);
+		transition: opacity 0.5s var(--ease-out-4) 0s, transform 0.5s var(--ease-out-4) 0s;
+	}
+}
+
+@layer support {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	html {
+		block-size: 100%;
+		color-scheme: dark light;
+	}
+
+	body {
+		min-block-size: 100%;
+		font-family: system-ui, sans-serif;
+
+		display: flex;
+		place-content: center;
+		place-items: center;
+		gap: 2ch;
+	}
+}
