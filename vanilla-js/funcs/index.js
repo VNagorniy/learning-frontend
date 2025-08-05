@@ -288,3 +288,26 @@ console.log(findFirstRepeatedWord('The quick brown fox jumps over the lazy dog j
 console.log(findFirstRepeatedWord('JavaScript is awesome and amazing')); // Ожидаемый результат: null
 
 //------------------------------------------------------------------
+//Сортировка массива объектов по ключу
+//Напишите функцию, которая принимает массив объектов и имя ключа, по которому нужно выполнить сортировку. Функция должна возвращать новый массив, отсортированный по указанному ключу в порядке возрастания.
+
+function sortByKey(array, key) {
+	return [...array].sort((a, b) => a[key] - b[key]);
+}
+
+const data = [
+	{ name: 'Alice', age: 25 },
+	{ name: 'Bob', age: 22 },
+	{ name: 'Charlie', age: 30 }
+];
+
+const sorted = sortByKey(data, 'age');
+console.log(sorted);
+// Ожидаемый результат:
+// [
+//   { name: "Bob", age: 22 },
+//   { name: "Alice", age: 25 },
+//   { name: "Charlie", age: 30 }
+// ]
+
+//------------------------------------------------------------------
