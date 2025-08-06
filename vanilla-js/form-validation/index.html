@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Валидация формы с обратной связью.</title>
+   <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+   <form id="myForm">
+      <input type="text" id="nameInput" placeholder="Введите имя" />
+      <button type="submit">Отправить</button>
+      <p id="error" style="color: red; display: none;">Поле не должно быть пустым</p>
+   </form>
+   <p id="success" style="color: green; display: none;">Форма успешно отправлена!</p>
+   <script src="script.js" defer></script>
+</body>
+
+</html>
