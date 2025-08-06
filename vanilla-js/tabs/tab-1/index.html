@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Вкладки с переключением содержимого</title>
+   <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+   <div class="tabs">
+      <button class="tab-button active" data-target="content1">Вкладка 1</button>
+      <button class="tab-button" data-target="content2">Вкладка 2</button>
+      <button class="tab-button" data-target="content3">Вкладка 3</button>
+   </div>
+
+   <div class="tab-content" id="content1">Содержимое первой вкладки</div>
+   <div class="tab-content" id="content2" style="display: none;">Содержимое второй вкладки</div>
+   <div class="tab-content" id="content3" style="display: none;">Содержимое третьей вкладки</div>
+   <script src="script.js" defer></script>
+</body>
+
+</html>
