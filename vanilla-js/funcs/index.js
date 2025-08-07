@@ -51,6 +51,25 @@ console.log(isPalindrome(str1));
 console.log(isPalindrome(str2));
 
 //------------------------------------------------------------------
+//Проверка строки на анаграмму
+function isAnagram(str1, str2) {
+	const formatString = (str) =>
+		str
+			.split('')
+			.filter((char) => char !== ' ')
+			.map((char) => char.toLowerCase())
+			.sort()
+			.join('');
+
+	return formatString(str1) === formatString(str2);
+}
+
+// Пример использования
+console.log(isAnagram('listen', 'silent')); // true
+console.log(isAnagram('hello', 'world')); // false
+console.log(isAnagram('Dormitory', 'Dirty room')); // true
+
+//------------------------------------------------------------------
 //Ф-я возвращающая первое уникальное вхождение в строке
 
 console.log(firstUniqueChar('leetcode')); //l
