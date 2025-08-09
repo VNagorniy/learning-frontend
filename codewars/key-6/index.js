@@ -191,3 +191,24 @@ function deleteNth(arr, n) {
 function moveZeros(arr) {
 	return [...arr.filter((n) => n !== 0), ...arr.filter((n) => n === 0)];
 }
+
+//------------------------------
+//Find the missing letter https://www.codewars.com/kata/5839edaa6754d6fec10000a2/train/javascript
+//Напишите метод, который принимает массив последовательных букв в качестве входных данных и возвращает недостающую букву в массиве.
+
+//Вы всегда получите действительный массив. И в нем всегда будет отсутствовать ровно одна буква. Длина массива всегда будет составлять не менее 2.
+
+// Примеры использования:
+//console.log(findMissingLetter(['a','b','c','d','f'])); // 'e'
+//console.log(findMissingLetter(['O','Q','R','S']));     // 'P'
+
+function findMissingLetter(array) {
+	for (let i = 0; i < array.length - 1; i++) {
+		// Если разница в кодах символов между текущей и следующей буквой больше 1
+		if (array[i].charCodeAt(0) + 1 !== array[i + 1].charCodeAt(0)) {
+			// Возвращаем пропущенную букву
+			return String.fromCharCode(array[i].charCodeAt(0) + 1);
+		}
+	}
+	throw new Error('No missing letter found');
+}
