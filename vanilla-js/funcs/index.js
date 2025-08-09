@@ -361,3 +361,30 @@ function pigIt(str) {
 console.log(pigIt('Pig latin is cool')); // 'igPay atinlay siay oolcay'
 console.log(pigIt('This is my string')); // 'hisTay siay ymay tringsay'
 //------------------------------------------------------------------
+//Data Reverse
+
+//Получен поток данных, который необходимо обратить вспять.
+
+//Каждый сегмент имеет длину 8 бит, что означает, что порядок этих сегментов должен быть изменен
+
+function dataReverse(data) {
+	const segmentSize = 8;
+	const segments = [];
+
+	// Разделяем массив на сегменты по 8 бит
+	for (let i = 0; i < data.length; i += segmentSize) {
+		segments.push(data.slice(i, i + segmentSize));
+	}
+
+	// Обращаем порядок сегментов
+	segments.reverse();
+
+	// Объединяем сегменты обратно в один массив
+	return [].concat(...segments);
+}
+
+// Пример использования:
+const dataTask = [1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0];
+const reversedData = dataReverse(dataTask);
+console.log(reversedData); // Вывод: [1,0,1,0,1,0,1,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1]
+//------------------------------------------------------------------
