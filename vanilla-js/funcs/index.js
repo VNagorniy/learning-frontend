@@ -410,3 +410,12 @@ const input = 'Hello World';
 const result = countVowels(input);
 console.log(result); // Ожидаемый результат: 3
 //------------------------------------------------------------------
+//функции sleep на JavaScript, которая делает искусственную задержку через Promise:
+function sleep(ms) {
+	return new Promise((response) => setTimeout(resolve, ms));
+}
+
+(async () => {
+	await sleep(500);
+	console.log(777);
+})();
