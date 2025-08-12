@@ -438,4 +438,17 @@ function isUnique(str) {
 console.log(isUnique('abcdef')); // возвращает true
 console.log(isUnique('aA')); // возвращает true
 console.log(isUnique('abcdea')); // возвращает false
+
 //------------------------------------------------------------------
+//Создайте функцию truncateText, которая обрезает длинную строку и добавляет ..., если длина превышает заданное значение. Это часто используется в интерфейсах: карточки товаров, превью статей, заголовки и т.д.
+
+function truncateText(text, maxLength) {
+	if (text.length <= maxLength) return text;
+	return text.slice(0, maxLength - 3) + '...';
+}
+
+// Пример использования:
+const title = 'Очень длинный заголовок, который не помещается';
+const shortTitle = truncateText(title, 25);
+
+console.log(shortTitle); // "Очень длинный заголов..."
