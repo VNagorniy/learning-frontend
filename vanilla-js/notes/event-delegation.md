@@ -74,3 +74,23 @@ window.addEventListener(
 Подробнее [тут](https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation)
 
 <hr/>
+## ⚙️ Что такое event.preventDefault() в JavaScript и зачем он нужен?
+**event.preventDefault()** используется для отмены действия браузера по умолчанию, связанного с событием. Это особенно полезно, если вы хотите реализовать свою логику вместо стандартного поведения (например, при отправке формы или переходе по ссылке).
+
+➡️ Пример:
+
+```html
+<a href="https://example.com" id="link">Перейти</a>
+
+<script>
+	document.getElementById('link').addEventListener('click', (event) => {
+		event.preventDefault();
+		console.log('Переход по ссылке отменён');
+	});
+</script>
+```
+
+В этом примере при клике на ссылку браузер не перейдёт по адресу. Вместо этого выполнится только ваша функция. Это часто используется в формах, при работе с SPA и кастомных интерфейсах.
+Подробнее [тут](https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault)
+
+<hr/>
