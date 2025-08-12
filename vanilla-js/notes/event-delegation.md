@@ -46,3 +46,31 @@ window.addEventListener(
 Подробнее [тут](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#parameters)
 
 <hr/>
+
+## ⚙️ Что такое event.stopPropagation() в JavaScript и зачем он нужен?
+
+**event.stopPropagation()** используется для остановки всплытия события. Это значит, что событие не будет "подниматься" вверх по DOM-дереву и вызывать обработчики на родительских элементах
+
+➡️ Пример:
+
+```html
+<div id="parent">
+	<button id="child">Кликни меня</button>
+</div>
+
+<script>
+	document.getElementById('parent').addEventListener('click', () => {
+		console.log('Клик по родителю');
+	});
+
+	document.getElementById('child').addEventListener('click', (event) => {
+		event.stopPropagation();
+		console.log('Клик по кнопке');
+	});
+</script>
+```
+
+В этом примере при клике на кнопку сработает только обработчик кнопки. Обработчик родителя не вызовется, потому что stopPropagation() остановил всплытие. Это полезно для изоляции поведения компонентов и предотвращения нежеланных побочных эффектов.
+Подробнее [тут](https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation)
+
+<hr/>
