@@ -419,3 +419,23 @@ function sleep(ms) {
 	await sleep(500);
 	console.log(777);
 })();
+
+//------------------------------------------------------------------
+//Напишите функцию, которая проверяет, состоит ли переданная строка только из уникальных символов. Решение должно учитывать регистр символов, то есть a и A считаются разными символами.
+
+function isUnique(str) {
+	const charStr = new Set();
+	for (let char of str) {
+		if (charStr.has(char)) {
+			return false;
+		}
+		charStr.add(char);
+	}
+	return true;
+}
+
+// Примеры использования
+console.log(isUnique('abcdef')); // возвращает true
+console.log(isUnique('aA')); // возвращает true
+console.log(isUnique('abcdea')); // возвращает false
+//------------------------------------------------------------------
