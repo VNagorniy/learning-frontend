@@ -94,3 +94,27 @@ window.addEventListener(
 Подробнее [тут](https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault)
 
 <hr/>
+## ⚙️ Что такое addEventListener с { once: true } и зачем он нужен?
+**addEventListener** в JavaScript принимает третий аргумент — объект с опциями. Одна из них — once, которая позволяет автоматически удалить обработчик после первого срабатывания. Это удобно, когда действие должно выполняться только один раз.
+
+➡️ Пример:
+
+```html
+<button id="start">Нажми один раз</button>
+
+<script>
+	document.getElementById('start').addEventListener(
+		'click',
+		() => {
+			console.log('Кнопка нажата');
+		},
+		{ once: true }
+	);
+</script>
+```
+
+В этом примере кнопка реагирует только на первое нажатие. После этого обработчик удаляется автоматически, без необходимости вручную вызывать removeEventListener.
+Это повышает читаемость кода и предотвращает утечки памяти при одноразовых событиях.
+Подробнее [тут](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#once)
+
+<hr/>
