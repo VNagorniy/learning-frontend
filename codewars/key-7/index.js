@@ -27,3 +27,18 @@ function partlist(arr) {
 
 	return partlistArr;
 }
+
+//Exes and Ohs https://www.codewars.com/kata/55908aad6620c066bc00002a/train/javascript
+function XO(str) {
+	str = str.toLowerCase();
+
+	let xCount = 0;
+	let oCount = 0;
+
+	for (let char of str) {
+		if (char === 'x') xCount++;
+		if (char === 'o') oCount++;
+	}
+
+	return xCount === oCount;
+}
