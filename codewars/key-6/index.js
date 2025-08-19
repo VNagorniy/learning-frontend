@@ -212,3 +212,10 @@ function findMissingLetter(array) {
 	}
 	throw new Error('No missing letter found');
 }
+
+//------------------------------
+//Array.diff https://www.codewars.com/kata/523f5d21c841566fde000009/javascript
+//Реализовать функцию разности, которая вычитает один список из другого и возвращает результат. Нужно удалить все значения из списка a, которые присутствуют в списке b, сохраняя их порядок.
+function arrayDiff(a, b) {
+	return a.filter((item) => !b.includes(item));
+}
