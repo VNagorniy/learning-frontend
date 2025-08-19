@@ -42,3 +42,17 @@ function XO(str) {
 
 	return xCount === oCount;
 }
+
+//------------------------------
+//Two to One https://www.codewars.com/kata/5656b6906de340bd1b0000ac/train/javascript
+//Возьмите 2 строки s1 и s2, включающие только буквы от a до z. Верните новую отсортированную строку, максимально длинную, содержащую различные буквы - каждая из которых берется только один раз - исходящие из s1 или s2.
+
+function longest(s1, s2) {
+	let combined = s1 + s2;
+
+	let uniqueChars = [...new Set(combined)];
+
+	uniqueChars.sort();
+
+	return uniqueChars.join('');
+}
