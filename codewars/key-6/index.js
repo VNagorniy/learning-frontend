@@ -219,3 +219,10 @@ function findMissingLetter(array) {
 function arrayDiff(a, b) {
 	return a.filter((item) => !b.includes(item));
 }
+
+//------------------------------
+//Which are in? https://www.codewars.com/kata/550554fd08b86f84fe000a58/train/javascript
+//Данные два массива строк a1 и a2 возвращают отсортированный массив r в лексикографическом порядке строк a1, которые являются подстроками строк a2.
+function inArray(array1, array2) {
+	return array1.filter((str1) => array2.some((str2) => str2.includes(str1))).sort();
+}
