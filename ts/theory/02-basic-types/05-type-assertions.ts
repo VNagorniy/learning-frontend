@@ -11,6 +11,14 @@ const stringLength2: number = (someValue2 as string).length;
 
 console.log(stringLength2);
 
+// Оператор satisfies для строгих контрактов (позволяет подсветить ошибку строго контракта объекта)
+const theme = {
+	primary: 'blue',
+	secondary: 'green',
+	// @ts-ignore
+	extra: 'oops' // тут ошибка светится
+} satisfies Record<'primary' | 'secondary', string>;
+
 //--------------------
 // ! - это non-null assertion, т.е значение не равно null
 const myElement: HTMLElement | null = document.getElementById('myElement');
