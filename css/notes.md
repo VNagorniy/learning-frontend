@@ -3,6 +3,7 @@
 1. [content-visibility](#content-visibility)
 2. [clamp](#clamp)
 3. [minmax()](#minmax)
+4. [Смена темы](#switchTheme)
 
 ---
 
@@ -97,5 +98,41 @@
 🗣️ minmax(100px, 1fr) гарантирует, что каждая колонка будет не меньше 100px, но при этом адаптивно расширяться в пределах 1fr.
 
 Подробнее [тут](https://developer.mozilla.org/en-US/docs/Web/CSS/minmax)
+
+<hr/>
+
+# <a id="switchTheme"></a>Смена темы
+
+**CSS Custom Properties** — они позволяют динамически менять стили, и к тому же очень легко интегрируются в уже существующие решения.
+
+➡️ Пример:
+
+```html
+<button onclick="document.body.classList.toggle('dark-theme')">Toggle Theme</button>
+```
+
+```css
+:root {
+	--primary-color: #3498db;
+	--secondary-color: #2ecc71;
+}
+
+body {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+button {
+	background-color: var(--secondary-color);
+	border: none;
+	color: white;
+	padding: 10px 20px;
+}
+
+.dark-theme {
+	--primary-color: #2c3e50;
+	--secondary-color: #8e44ad;
+}
+```
 
 <hr/>
