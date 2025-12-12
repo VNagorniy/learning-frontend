@@ -5,6 +5,7 @@
 - [AbortSignal.timeout()](#abortsignaltimeout)
 - [Storage API в 2025: что, где и когда хранить](#storage-api)
   - [Best Practices](#best-practices)
+- [Нативные API (File System, Clipboard, Web Share)](#нативные-api)
 
 ## Что такое Performance API в JavaScript и зачем он используется?
 
@@ -150,5 +151,38 @@ try {
 - Не храни чувствительные данные — браузер ≠ сейф.
 - Проверяй лимиты хранилища **(navigator.storage.estimate() — underrated)**.
 - Используй **Background Sync**, если нужно синхронизировать оффлайн-данные.
+
+<hr>
+
+## Нативные API
+
+1. **File System Access API** — Позволяет работать с файлами прямо на диске пользователя — читать, писать, сохранять без танцев с input[type=file].
+
+Отлично подходит для локальных редакторов, playground'ов, PWA-приложений.
+Но важно: требует HTTPS и согласия пользователя
+
+```js
+const handle = await window.showSaveFilePicker();
+const stream = await handle.createWritable();
+await stream.write('Hello world!');
+await stream.close();
+```
+
+2. **Clipboard API** — Уже давно не просто document.execCommand('copy'). Можно копировать/вставлять не только текст, но и изображения, HTML, JSON. Если делаете дашборд, таблицы, визуальные тулзы — must have.
+
+```js
+await navigator.clipboard.writeText('Copied!');
+const image = await navigator.clipboard.read();
+```
+
+3. **Web Share API** — Позволяет вызвать системное окно шаринга (например, переслать ссылку в Telegram или Mail прямо из браузера). Особенно удобно для мобильных PWA.
+
+```js
+await navigator.share({
+	title: 'Frontend Magic',
+	text: 'Проверь этот пост!',
+	url: location.href
+});
+```
 
 <hr>
