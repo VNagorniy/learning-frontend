@@ -1,6 +1,7 @@
 ## Оглавление
 
 - [Proxy и Reflect](#proxy-и-reflect)
+- [Инструменты Accessibility 2.0](#accessibility)
 
 ## Proxy и Reflect
 
@@ -62,3 +63,13 @@ const safe = new Proxy(obj, {
 ```
 
 <hr>
+
+## Accessibility
+
+• **axe DevTools** — проводит автоматические проверки доступности прямо в браузере.
+
+• **Polypane / Responsively App** — визуализирует интерфейсы с учетом различных состояний, включая цветовую слепоту и контрастность.
+
+• **Figma Contrast & A11y plugins** — проектируй интерфейсы с учетом доступности еще до начала разработки.
+
+• **aria-linter и eslint-plugin-jsx-a11y** — обязательные инструменты для React/Next проектов.
