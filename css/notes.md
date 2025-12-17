@@ -7,6 +7,7 @@
 5. [CSS Scroll Snap](#scrollSnap)
 6. [Псевдоклассы :not() и :has()](#псевдоклассы-not-и-has)
 7. [CSS в 2025 (:is, :where, :layer)](#css-в-2025)
+8. [Logical properties в CSS](#logical-properties-в-css)
 
 ---
 
@@ -266,3 +267,29 @@ p:not(:has(+ h2)) {
 ```
 
 <hr/>
+
+## Logical properties в CSS
+
+Мы привыкли думать об отступах сверху, справа, снизу и слева. Однако в мире, где направление текста может меняться, такой подход становится всё более ограниченным. На помощь приходят **logical properties**. Они позволяют описывать отступы и размеры в зависимости от потока текста, а не от сторон.
+
+```css
+/* Старый способ */
+.card {
+	padding-top: 12px;
+	padding-left: 16px;
+}
+
+/* С логическими свойствами */
+.card {
+	padding-block-start: 12px;
+	padding-inline-start: 16px;
+}
+
+/* margin-inline — отступы по горизонтали
+margin-block — отступы по вертикали
+padding-inline — внутренние отступы горизонтальные
+padding-block — внутренние вертикальные
+inset-inline — позиционирование по горизонтали (left/right)
+inset-block — позиционирование по вертикали (top/bottom) 
+*/
+```
