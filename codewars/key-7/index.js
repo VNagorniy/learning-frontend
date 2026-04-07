@@ -56,3 +56,24 @@ function longest(s1, s2) {
 
 	return uniqueChars.join('');
 }
+
+//------------------------------
+//Going to the cinema https://www.codewars.com/kata/562f91ff6a8b77dfe900006e/train/javascript
+
+function movie(card, ticket, perc) {
+	let n = 0;
+	let costA = 0;
+	let costB = card;
+	let currentTicketPrice = ticket * perc;
+
+	while (Math.ceil(costB) >= costA) {
+		n++;
+
+		costA += ticket;
+
+		costB += currentTicketPrice;
+		currentTicketPrice *= perc;
+	}
+
+	return n;
+}
