@@ -77,3 +77,17 @@ function movie(card, ticket, perc) {
 
 	return n;
 }
+
+//------------------------------
+// You're a square! https://www.codewars.com/kata/54c27a33fb7da0db0100040e
+
+var isSquare = function (n) {
+	return n >= 0 && Math.sqrt(n) % 1 === 0;
+};
+
+//------------------------------
+// Shortest Word https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9
+
+function findShort(s) {
+	return Math.min(...s.split(' ').map((word) => word.length));
+}
