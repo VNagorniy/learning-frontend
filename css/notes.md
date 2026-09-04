@@ -9,6 +9,7 @@
 7. [CSS в 2025 (:is, :where, :layer)](#css-в-2025)
 8. [Logical properties в CSS](#logical-properties-в-css)
 9. [Что такое @property](#что-такое-property)
+10. [Что такое @starting-style?](#что-такое-starting-style)
 
 ---
 
@@ -337,7 +338,9 @@ inset-block — позиционирование по вертикали (top/bo
 body {
 	background: var(--bg);
 	color: var(--text);
-	transition: background 0.3s, color 0.3s;
+	transition:
+		background 0.3s,
+		color 0.3s;
 }
 
 /* Анимируемые переменные */
@@ -376,5 +379,13 @@ body.dark {
 	--radius: 12px;
 }
 ```
+
+<hr/>
+
+## Что такое ⁣starting-style?
+
+Он решает старую проблему: анимацию появления элемента, который только что добавили в DOM.
+
+![⁣@starting-style](./images/starting-style.jpg)
 
 <hr/>
