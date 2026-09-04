@@ -10,6 +10,7 @@
 8. [Logical properties в CSS](#logical-properties-в-css)
 9. [Что такое @property](#что-такое-property)
 10. [Что такое @starting-style?](#что-такое-starting-style)
+11. [CSS Anchor Positioning](#css-anchor-positioning)
 
 ---
 
@@ -387,5 +388,86 @@ body.dark {
 Он решает старую проблему: анимацию появления элемента, который только что добавили в DOM.
 
 ![⁣@starting-style](./images/starting-style.jpg)
+
+<hr/>
+
+## CSS Anchor Positioning
+
+**CSS Anchor Positioning** — это то, чего давно не хватало для тултипов, поповеров и меню: привязка одного элемента к другому на уровне CSS, без ручного расчёта координат в JS.
+
+**Раньше типичный flow был такой:**
+
+1. getBoundingClientRect()
+2. посчитать top / left
+3. записать inline-стили
+4. пересчитать при scroll / resize / zoom / изменении контента
+5. случайно получить layout thrashing
+
+Особенно неприятно, когда таких тултипов десятки, они живут в порталах, попадают в top layer или должны флипаться при нехватке места.
+
+CSS Anchor Positioning решает именно эту задачу: элемент объявляется «якорем», а другой элемент позиционируется относительно него.
+
+Минимальный пример:
+
+```html
+<button class="help" popovertarget="tip">?</button>
+
+<div id="tip" popover class="tooltip">Подсказка без JS-позиционирования</div>
+```
+
+```css
+.help {
+	anchor-name: --help;
+}
+
+.tooltip {
+	position: absolute;
+	position-anchor: --help;
+
+	inset-block-start: anchor(block-end);
+	inset-inline-start: anchor(center);
+
+	translate: -50% 8px;
+	margin: 0;
+
+	padding: 8px 12px;
+	border-radius: 8px;
+	background: #111;
+	color: white;
+}
+```
+
+**Что здесь происходит:**
+
+- _.help_ становится anchor-элементом через anchor-name
+- _.tooltip_ привязывается к нему через position-anchor
+- _anchor(block-end)_ берёт нижнюю границу кнопки
+- _anchor(center)_ берёт горизонтальный центр кнопки
+- _translate_ добавляет смещение для красивого отступа
+
+JS при этом может заниматься только поведением: открыть / закрыть поповер, обработать action, синхронизировать состояние. Но не измерять DOM и не писать координаты.
+
+В этом и главная ценность: positioning переезжает туда, где ему место — в layout engine браузера.
+
+**Почему это важно для производительности:**
+
+- меньше getBoundingClientRect() в рантайме
+- меньше forced reflow
+- меньше resize / scroll listeners
+- меньше кастомной логики для пересчёта позиции
+- проще работать с Popover API и top layer
+- меньше зависимости от тяжёлых positioning-библиотек там, где нужна простая привязка
+
+Для сложных кейсов вроде dropdown-меню, context menu или rich tooltip всё ещё могут понадобиться fallback-стратегии, collision handling и прогрессивное улучшение. Но базовый сценарий «показать элемент около другого элемента» наконец-то становится декларативным.
+
+Практический вывод:
+
+если вы сейчас используете JS только для того, чтобы положить tooltip под кнопку, стоит присмотреться к связке:
+
+- Popover API — для поведения и top layer
+- CSS Anchor Positioning — для координат
+- JS — только для бизнес-логики, а не layout-математики
+
+Это не полная замена Floating UI / Popper во всех сценариях, но очень сильный нативный primitive, который закрывает большой пласт повседневных задач без layout thrashing.
 
 <hr/>
