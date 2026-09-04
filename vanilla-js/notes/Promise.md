@@ -1,4 +1,12 @@
-## ⚙️ Что такое Promise в JavaScript и зачем он нужен?
+## Оглавление
+
+- [Что такое Promise в JavaScript и зачем он нужен?](#что-такое-promise-в-javascript-и-зачем-он-нужен)
+- [Что такое Promise.allSettled в JavaScript и зачем он используется?](#что-такое-promiseallsettled-в-javascript-и-зачем-он-используется)
+- [Что такое Promise.race в JavaScript и зачем он используется?](#что-такое-promiserace-в-javascript-и-зачем-он-используется)
+- [Что такое Promise.any в JavaScript и зачем он используется?](#что-такое-promiseany-в-javascript-и-зачем-он-используется)
+- [Что такое Promise.withResolvers()?](#что-такое-promisewithresolvers)
+
+## Что такое Promise в JavaScript и зачем он нужен?
 
 **Promise** — это встроенный объект для работы с асинхронными операциями. Он представляет значение, которое доступно сейчас, позже или никогда.
 
@@ -63,7 +71,7 @@ Promise.race([promise1, promise2]).then(console.log); // 'Промис 2'
 
 <hr/>
 
-## ⚙️ Что такое Promise.any в JavaScript и зачем он используется?
+## Что такое Promise.any в JavaScript и зачем он используется?
 
 **Promise.race** принимает массив промисов и возвращает результат первого завершившегося промиса (успешного или с ошибкой). Полезен для задач, где важен самый быстрый результат или требуется таймаут.
 
@@ -79,5 +87,47 @@ Promise.any([promise1, promise2, promise3]).then(console.log).catch(console.erro
 
 🗣️ В этом примере Promise.any возвращает результат promise2, так как он первый завершился успешно. Если все промисы отклонены, срабатывает catch.
 Подробнее [тут](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+
+<hr/>
+
+## Что такое Promise.withResolvers()?
+
+Раньше обычно писали так:
+
+```javascript
+let resolve;
+let reject;
+
+const promise = new Promise((res, rej) => {
+	resolve = res;
+	reject = rej;
+});
+```
+
+```javascript
+const { promise, resolve, reject } = Promise.withResolvers();
+```
+
+👉 без лишнего конструктора <br>
+👉 без мутаций переменных <br>
+👉 без промежуточного boilerplate <br>
+
+Где это особенно полезно<br>
+👉 очереди <br>
+👉 event-based логика<br>
+👉 deferred pattern<br>
+👉 кастомные async abstractions<br>
+
+Почему это приятно
+
+Раньше приходилось:<br>
+
+👉 создавать Promise вручную<br>
+👉 тащить resolve/reject наружу<br>
+👉 писать шаблонный код снова и снова<br>
+
+Теперь API делает это нативно.
+
+![promise.withResolvers()](<./images/promise.withResolvers().jpg>)
 
 <hr/>
