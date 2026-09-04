@@ -2,6 +2,7 @@
 
 1. [Isolated declarations](#isolated-declarations)
 2. [Recursive type limits](#recursive-type-limits)
+3. [⁣Variadic tuple types](#variadic-tuple-types)
 
 ---
 
@@ -38,5 +39,21 @@
 👉 utility types поверх utility types
 
 ![Recursive type limits](../images/recursiveTypeLimits.jpg)
+
+<hr/>
+
+# ⁣Variadic tuple types
+
+До variadic tuple types многие сложные сигнатуры в TypeScript выглядели как наказание.
+
+**Особенно:**
+
+👉 curry  
+👉 compose  
+👉 middleware  
+👉 typed event emitter  
+👉 любые функции с «прокинь аргументы дальше»
+
+![⁣Variadic tuple types](../images/variadicTupleTypes.jpg)
 
 <hr/>
